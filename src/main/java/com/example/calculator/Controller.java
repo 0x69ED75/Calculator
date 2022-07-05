@@ -1,4 +1,9 @@
 package com.example.calculator;
+/*
+Controller stores the GUI elements and also stores the methods which buttons will call.
+The methods which each button calls as well as more information about the GUI elements can be read in Calculator-view.fxml
+ */
+
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -7,7 +12,6 @@ import javafx.scene.control.Label;
 
 public class Controller {
     public static int total = 0;
-
 
     @FXML
     private Label Display;
@@ -58,10 +62,10 @@ public class Controller {
 
     @FXML
     /* Appending the button's text to Display.
-    Usually, this would need a different method for each button, each method calling the modifyDisplay method with the integer of the button pressed as parameter.
+    Usually, to successfully pass the correct number to the modifyDisplay class, I  would need a different method for each button, each method calling the modifyDisplay method with the integer of the button pressed as parameter.
     However, I have shortened this down to a single method by grabbing the eventsource, which gives a set of information about where the event was called from.
-    In this case, it would return The Button ID, Styleclass and finally, the text contained within the button.
-    If I parse this as a string, and take only the penultimate character, I can successfully extract the text from the button, effectively grabbing the buttons integer value.
+    In this case, it would return The Button ID, the buttons' 'Styleclass' and finally, the text contained within the button.
+    If I parse this as a string, and take only the penultimate character, I can successfully extract the text from the button, effectively grabbing the buttons' integer value.
      */
     void appendChosen(ActionEvent event) {
         String x = event.getSource().toString(); // getting the source of the event, in this case, the button's ID, style class and the button's text.
@@ -70,19 +74,21 @@ public class Controller {
         modifyDisplay.append(buttonValue);
     }
     @FXML
+    // This method runs when the Delete button is pressed, to remove a single digit.
     void deleteAction(ActionEvent event) {
         Display_Static = Display;
         modifyDisplay.removeLast();
     }
     @FXML
-    void operandSolve(ActionEvent event) {
+    // This method runs when an operator is pressed.
+    void operatorSolve(ActionEvent event) {
         String x = event.getSource().toString();
-        char operand = x.charAt(x.length()-2);
-        operands.chooseOperand(operand);
+        char operator = x.charAt(x.length()-2);
+        operators.chooseOperator(operator);
 
     }
-
     @FXML
+    // This runs when the clear button is pressed. It runs the clear display methods, as well as sets total to 0.
     void clearAction(ActionEvent event) {
         modifyDisplay.clearDisplay();
         total = 0;
