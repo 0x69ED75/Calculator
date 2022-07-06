@@ -1,13 +1,13 @@
 # Calculator
 A basic calculator I have made to learn JavaFX and to try and use some OOP.
 
-- Currently only supports simple addition and subtraction.
+- Currently only supports: addition, subtraction, multiplication and division of both whole and decimal numbers.
 
 TODO list:
-- Add division and multiplication
 - Add error handling
-- Improve object oriented-ness
 - Add a "running calculation" text box which shows the calculation carried out so far.
+- Improve object oriented-ness
 - Improve "Operators" class where the mathematics takes place, as currently I am not happy with how everything is calculated, although, it will work for now.
 
-![screenshot](https://cdn.upload.systems/uploads/f1CD4nz9.gif)
+![screenshot](https://cdn.upload.systems/uploads/KdndTgPp.gif)
+
