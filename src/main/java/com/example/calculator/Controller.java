@@ -49,8 +49,12 @@ public class Controller {
     private Button deleteButton;
 
     @FXML
+    private Button divisionButton;
+    @FXML
     private Button additionButton;
 
+    @FXML
+    private Button multiplicationButton;
     @FXML
     private Button subtractionButton;
 
@@ -62,7 +66,7 @@ public class Controller {
 
     @FXML
     /* Appending the button's text to Display.
-    Usually, to successfully pass the correct number to the modifyDisplay class, I  would need a different method for each button, each method calling the modifyDisplay method with the integer of the button pressed as parameter.
+    Usually, to successfully pass the correct number to the modifyDisplay class, I  would need a different method for each button, with each method calling the modifyDisplay method with the integer of the button pressed as parameter.
     However, I have shortened this down to a single method by grabbing the eventsource, which gives a set of information about where the event was called from.
     In this case, it would return The Button ID, the buttons' 'Styleclass' and finally, the text contained within the button.
     If I parse this as a string, and take only the penultimate character, I can successfully extract the text from the button, effectively grabbing the buttons' integer value.

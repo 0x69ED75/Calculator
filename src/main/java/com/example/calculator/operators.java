@@ -32,6 +32,16 @@ public class operators {
                 modifyDisplay.clearDisplay();
                 flag = '-';
             }
+            case '/' -> {
+                Controller.total = Integer.parseInt(modifyDisplay.getDisplayText());
+                modifyDisplay.clearDisplay();
+                flag = '/';
+            }
+            case '*' -> {
+                Controller.total = Integer.parseInt(modifyDisplay.getDisplayText());
+                modifyDisplay.clearDisplay();
+                flag = '*';
+            }
             case '=' -> equals();
         }
     }
@@ -44,6 +54,14 @@ public class operators {
             }
             case '-' -> {
                 Controller.total -= Integer.parseInt(modifyDisplay.getDisplayText());
+                modifyDisplay.setTextOperation();
+            }
+            case '/' -> {
+                Controller.total /= Integer.parseInt(modifyDisplay.getDisplayText());
+                modifyDisplay.setTextOperation();
+            }
+            case '*' -> {
+                Controller.total *= Integer.parseInt(modifyDisplay.getDisplayText());
                 modifyDisplay.setTextOperation();
             }
         }
