@@ -10,13 +10,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-public class Controller {
-    public static int total = 0;
 
+public class Controller {
+    public static double total = 0;
     @FXML
     private Label Display;
 
-    static Label Display_Static;
+    static Label Display_Static; // making a static version of Display to be accessed outside of Controller, errors occur when trying to use setters / getters in this class.
 
     @FXML
     private Button EightSelect;
@@ -65,6 +65,9 @@ public class Controller {
     private Button ZeroSelect;
 
     @FXML
+    private Button decimalSelect;
+
+    @FXML
     /* Appending the button's text to Display.
     Usually, to successfully pass the correct number to the modifyDisplay class, I  would need a different method for each button, with each method calling the modifyDisplay method with the integer of the button pressed as parameter.
     However, I have shortened this down to a single method by grabbing the eventsource, which gives a set of information about where the event was called from.
@@ -77,12 +80,23 @@ public class Controller {
         Display_Static = Display;
         modifyDisplay.append(buttonValue);
     }
+
+    // This method runs similarly to appendChosen, but is capable of appending characters, not Integers.
+    @FXML
+    void appendDecimal(ActionEvent event) {
+        String x = event.getSource().toString();
+        char buttonValue = (x.charAt(x.length()-2));
+        Display_Static = Display;
+        modifyDisplay.appendChar(buttonValue);
+    }
+
     @FXML
     // This method runs when the Delete button is pressed, to remove a single digit.
     void deleteAction(ActionEvent event) {
         Display_Static = Display;
         modifyDisplay.removeLast();
     }
+
     @FXML
     // This method runs when an operator is pressed.
     void operatorSolve(ActionEvent event) {
@@ -91,6 +105,7 @@ public class Controller {
         operators.chooseOperator(operator);
 
     }
+
     @FXML
     // This runs when the clear button is pressed. It runs the clear display methods, as well as sets total to 0.
     void clearAction(ActionEvent event) {

@@ -23,22 +23,22 @@ public class operators {
 
         switch (x) {
             case '+' -> {
-                Controller.total = Integer.parseInt(modifyDisplay.getDisplayText());
+                Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.clearDisplay();
                 flag = '+';
             }
             case '-' -> {
-                Controller.total = Integer.parseInt(modifyDisplay.getDisplayText());
+                Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.clearDisplay();
                 flag = '-';
             }
             case '/' -> {
-                Controller.total = Integer.parseInt(modifyDisplay.getDisplayText());
+                Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.clearDisplay();
                 flag = '/';
             }
             case '*' -> {
-                Controller.total = Integer.parseInt(modifyDisplay.getDisplayText());
+                Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.clearDisplay();
                 flag = '*';
             }
@@ -48,20 +48,19 @@ public class operators {
     public static void equals(){
         switch (flag) {
             case '+' -> {
-                Controller.total += Integer.parseInt(modifyDisplay.getDisplayText());
+                Controller.total += Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.setTextOperation();
-
             }
             case '-' -> {
-                Controller.total -= Integer.parseInt(modifyDisplay.getDisplayText());
+                Controller.total -= Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.setTextOperation();
             }
             case '/' -> {
-                Controller.total /= Integer.parseInt(modifyDisplay.getDisplayText());
+                Controller.total /= Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.setTextOperation();
             }
             case '*' -> {
-                Controller.total *= Integer.parseInt(modifyDisplay.getDisplayText());
+                Controller.total *= Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.setTextOperation();
             }
         }
