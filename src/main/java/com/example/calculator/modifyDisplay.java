@@ -24,7 +24,7 @@ public class modifyDisplay {
         return Controller.Display_Static.getText();
     }
 
-    // This method removes the last digit currently stored in the total display.
+    // This method removes the last digit currently stored in the total display as well as removing the last digit stored in the calculations box
     public static void removeLast(){
         StringBuilder x = new StringBuilder(getDisplayText());
         if(x.length() > 0){
@@ -46,6 +46,7 @@ public class modifyDisplay {
     public static void appendCalculations(double num){
         Controller.calculationsBox_Static.setText(getCalculationsText() + String.valueOf((modifyDisplay.roundTo3.format(num))));
     }
+
     // This method appends any symbols to the calculations box.
     public static void appendCalculationsChar(char x){
         if(x != '='){ // appending any symbol except for the equals symbol, as I will need to append this after calculations are complete. manually..
@@ -56,7 +57,14 @@ public class modifyDisplay {
     public static String getCalculationsText(){
         return Controller.calculationsBox_Static.getText();
     }
+    public static void clearCalculations(){
+        Controller.calculationsBox_Static.setText("");
+    }
+    public static void calculationsRemoveLast(){
+        StringBuilder x = new StringBuilder(getCalculationsText());
+        if(x.length() > 0){
+            Controller.calculationsBox_Static.setText(x.deleteCharAt(x.length()-1).toString());
+        }
+    }
 
-
-
-}
+    }

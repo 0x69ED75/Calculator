@@ -104,6 +104,7 @@ public class Controller {
     void deleteAction(ActionEvent event) {
         Display_Static = Display;
         modifyDisplay.removeLast();
+        modifyDisplay.calculationsRemoveLast();
     }
 
     @FXML
@@ -120,6 +121,7 @@ public class Controller {
     // This runs when the clear button is pressed. It runs the clear display methods, as well as sets total to 0.
     void clearAction(ActionEvent event) {
         modifyDisplay.clearDisplay();
+        modifyDisplay.clearCalculations();
         total = 0;
     }
 
