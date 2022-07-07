@@ -19,6 +19,11 @@ public class Controller {
     static Label Display_Static; // making a static version of Display to be accessed outside of Controller, errors occur when trying to use setters / getters in this class.
 
     @FXML
+    private Label calculationsBox;
+
+    static Label calculationsBox_Static; // making a static version of calculationsBox to be accessed outside of Controller, errors occur when trying to use setters / getters in this class.
+
+    @FXML
     private Button EightSelect;
 
     @FXML
@@ -78,7 +83,9 @@ public class Controller {
         String x = event.getSource().toString(); // getting the source of the event, in this case, the button's ID, style class and the button's text.
         int buttonValue = (Character.getNumericValue((x.charAt(x.length()-2)))); // I only want the penultimate character in the button's source, which is the Button's text.
         Display_Static = Display;
+        calculationsBox_Static = calculationsBox;
         modifyDisplay.append(buttonValue);
+        modifyDisplay.appendCalculations(buttonValue);
     }
 
     // This method runs similarly to appendChosen, but is capable of appending characters, not Integers.
@@ -87,7 +94,9 @@ public class Controller {
         String x = event.getSource().toString();
         char buttonValue = (x.charAt(x.length()-2));
         Display_Static = Display;
+        calculationsBox_Static = calculationsBox;
         modifyDisplay.appendChar(buttonValue);
+        modifyDisplay.appendCalculations(buttonValue);
     }
 
     @FXML
@@ -103,7 +112,8 @@ public class Controller {
         String x = event.getSource().toString();
         char operator = x.charAt(x.length()-2);
         operators.chooseOperator(operator);
-
+        calculationsBox_Static = calculationsBox;
+        modifyDisplay.appendCalculationsChar(operator);
     }
 
     @FXML

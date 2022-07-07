@@ -6,6 +6,8 @@ The modifyDisplay class stores any method which interacts with the total amount 
 For example, appending to the display or removing the last digit in the display.
  */
 public class modifyDisplay {
+    static DecimalFormat roundTo3 = new DecimalFormat("0.###"); // Rounding output to 3 decimal places.
+
 
     // This method appends the digit the user has pressed on the GUI onto the total.
     public static void append(int num){
@@ -37,8 +39,22 @@ public class modifyDisplay {
 
     // This method sets the total display to the value currently stored in public variable 'total'.
     public static void setTextOperation(){
-        DecimalFormat roundTo3 = new DecimalFormat("0.###"); // Rounding output to 3 decimal places.
-        Controller.Display_Static.setText(String.valueOf(roundTo3.format(Controller.total)));
+        Controller.Display_Static.setText(String.valueOf(modifyDisplay.roundTo3.format(Controller.total)));
+    }
+
+    // This method appends any numbers to the calculations box, rounded to 3dp.
+    public static void appendCalculations(double num){
+        Controller.calculationsBox_Static.setText(getCalculationsText() + String.valueOf((modifyDisplay.roundTo3.format(num))));
+    }
+    // This method appends any symbols to the calculations box.
+    public static void appendCalculationsChar(char x){
+        if(x != '='){ // appending any symbol except for the equals symbol, as I will need to append this after calculations are complete. manually..
+            Controller.calculationsBox_Static.setText(getCalculationsText() + String.valueOf(x));
+        }
+    }
+    // This method gets the calculations box text.
+    public static String getCalculationsText(){
+        return Controller.calculationsBox_Static.getText();
     }
 
 

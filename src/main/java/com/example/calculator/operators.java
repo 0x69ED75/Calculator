@@ -16,7 +16,7 @@ public class operators {
     public static char flag = 0;
     public static void chooseOperator(char x){
 
-        if(flag != 0){
+        if(flag != 0 && x != '='){
             equals();
             flag = 0;
         }
@@ -42,7 +42,9 @@ public class operators {
                 modifyDisplay.clearDisplay();
                 flag = '*';
             }
-            case '=' -> equals();
+            case '=' -> {
+                equals();
+            }
         }
     }
     public static void equals(){
@@ -64,6 +66,8 @@ public class operators {
                 modifyDisplay.setTextOperation();
             }
         }
+        Controller.calculationsBox_Static.setText(modifyDisplay.getCalculationsText() + '=');
+        modifyDisplay.appendCalculations(Controller.total);
         flag = 0;
     }
 
