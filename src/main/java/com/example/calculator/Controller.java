@@ -12,13 +12,12 @@ import javafx.scene.control.Label;
 
 
 public class Controller {
+
     public static double total = 0;
     @FXML
     private Label Display;
 
-
     static Label Display_Static; // making a static version of Display to be accessed outside of Controller, errors occur when trying to use setters / getters in this class.
-
     @FXML
     private Label calculationsBox;
 
@@ -112,7 +111,7 @@ public class Controller {
     // This method runs when an operator is pressed.
     void operatorSolve(ActionEvent event) {
 
-        try { // Try-catch to handle improper uses of operators, such as using operators before an integer has been entered.
+        try { // Try-catch to handle improper uses of operators, such as using operators before an integer has been entered. An exception for denoting negative numbers exists in operators.chooseOperator
             Display_Static = Display;
             calculationsBox_Static = calculationsBox;
             String x = event.getSource().toString();
@@ -123,7 +122,6 @@ public class Controller {
         catch(Exception e){
             System.out.println("Illegal use of operators");
         }
-
     }
 
     @FXML
@@ -133,6 +131,7 @@ public class Controller {
         calculationsBox_Static = calculationsBox;
         modifyDisplay.clearDisplay();
         modifyDisplay.clearCalculations();
+        operators.flag = 0;
         total = 0;
     }
 

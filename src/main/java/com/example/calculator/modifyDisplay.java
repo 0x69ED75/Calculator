@@ -36,9 +36,9 @@ public class modifyDisplay {
         Controller.Display_Static.setText(String.valueOf(x));
     }
 
-    // This method completely clears the value stored in the total display.
+    // This method completely clears the value stored in the total display. It must be an empty string, as not to be set to null and cause errors elsewhere.
     public static void clearDisplay(){
-        Controller.Display_Static.setText("");
+        Controller.Display_Static.setText(" ");
     }
 
     // This method sets the total display to the value currently stored in public variable 'total'.

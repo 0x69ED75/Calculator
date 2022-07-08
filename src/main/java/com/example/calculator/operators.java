@@ -16,21 +16,19 @@ public class operators {
     public static char flag = 0;
     public static void chooseOperator(char x){
 
-        /* This next if statement is crucial for completing multiple calculations without pressing equals, e.g. (5+5+5+1 = 16, without this, we would only get the last two digits, 5+1)
+        /*This if statement handles the multiple use cases of the subtraction symbol, such as that to denote a negative integer.
+           For example, without this, the code could not handle equations such as 5+-5, as after pressing +, an operand is expected, but an operator was given.
+           An exception to this rule is made when the flag is subtraction, as then it is likely the user wishes to do compound subtraction such as 5-10-15 rather than denote negative numbers. */
+        if(x == '-' && modifyDisplay.getDisplayText().length()==1 && flag != 0){
+            modifyDisplay.replaceTextSymbol('-');
+            return;
+        }
+        /* This next if statement is crucial for completing multiple calculations without pressing equals, (e.g. 5+5+5+1 = 16, without this, we would only get the last two digits, 5+1)
            It does this by calling the equals' method silently between operations, to keep a running sum.
-           Furthermore, this if statement has a nested if statement which handles the multiple use cases of the subtraction symbol, such as that to denote a negative integer.
-           For example, without this, the code could not handle equations such as 5+-5, as after pressing +, a number is expected, but an operator was given.
-           An exception to this rule is made when the flag is subtraction, as then it is likely the user wishes to do compound subtraction such as 5-10-15 rather than denote negative numbers.
          */
         if(flag != 0 && x != '='){
-            if(x == '-' && flag != '-'){ // if subtraction is given, when an operand was expected and the flag isn't already subtraction, it must mean the user wishes to denote a negative number.
-                modifyDisplay.replaceTextSymbol('-');
-                return;
-            }
-            else { // handling equations with multiple operators.
-                equals();
-                flag = 0;
-            }
+            equals();
+            flag = 0;
         }
 
         switch (x) {
@@ -83,6 +81,7 @@ public class operators {
                 modifyDisplay.setTextOperation();
             }
         }
+        modifyDisplay.setTextOperation();
         Controller.calculationsBox_Static.setText(modifyDisplay.getCalculationsText() + '=');
         modifyDisplay.appendCalculations(Controller.total);
         flag = 0;

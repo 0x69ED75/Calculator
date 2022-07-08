@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculator.Controller">
    <children>
-      <Label fx:id="Display" layoutY="49.0" prefHeight="91.0" prefWidth="647.0">
+      <Label fx:id="Display" layoutY="49.0" prefHeight="91.0" prefWidth="647.0" text=" ">
          <font>
             <Font size="36.0" />
          </font>
@@ -97,7 +97,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Label fx:id="calculationsBox" layoutY="6.0" prefHeight="48.0" prefWidth="647.0">
+      <Label fx:id="calculationsBox" layoutY="14.0" prefHeight="48.0" prefWidth="647.0">
          <font>
             <Font size="19.0" />
          </font>
