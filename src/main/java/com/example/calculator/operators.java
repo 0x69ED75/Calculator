@@ -1,6 +1,6 @@
 package com.example.calculator;
 /*
-The operators class works pretty abnormally, this is because the actual calculations are calculated when the user presses the equals button, not on press any of the operators. Therefore, it made this class a bit trickier than expected.
+The operators class works pretty abnormally, this is because the actual calculations are calculated when the user presses the equals button, not on the press any of the operators. Therefore, it made this class a bit trickier than expected.
 This class works by doing the following:
    - Calculating which operator the user has selected.
    - Storing this operator as public variable 'flag'
@@ -18,14 +18,15 @@ public class operators {
 
         /*This if statement handles the multiple use cases of the subtraction symbol, such as that to denote a negative integer.
            For example, without this, the code could not handle equations such as 5+-5, as after pressing +, an operand is expected, but an operator was given.
-           An exception to this rule is made when the flag is subtraction, as then it is likely the user wishes to do compound subtraction such as 5-10-15 rather than denote negative numbers. */
-        if(x == '-' && modifyDisplay.getDisplayText().length()==1 && flag != 0){
+           A length check is here as an additional check to decide whether a negative number was depicted, or whether subtraction was depicted.
+           A negative number is depicted by a '-' being entered before the number, which in this case is when the length of getDisplayText is 1 (as displayText is initialised as char " ", making it of length 1)
+           This avoids situations where the application interprets subtraction as a negative number*/
+        if(x == '-' && modifyDisplay.getDisplayText().length()==1){
             modifyDisplay.replaceTextSymbol('-');
             return;
         }
         /* This next if statement is crucial for completing multiple calculations without pressing equals, (e.g. 5+5+5+1 = 16, without this, we would only get the last two digits, 5+1)
-           It does this by calling the equals' method silently between operations, to keep a running sum.
-         */
+           It does this by calling the equals' method silently between operations, to keep a running sum.*/
         if(flag != 0 && x != '='){
             equals();
             flag = 0;
@@ -38,14 +39,9 @@ public class operators {
                 flag = '+';
             }
             case '-' -> {
-                try { // this try catch statement catches fringe uses of the subtraction symbol, such as that to denote negative numbers before anything else has been entered into the application.
                     Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
                     modifyDisplay.clearDisplay();
                     flag = '-';
-                }
-                catch (Exception e){ // The only exception here can be that the user has chosen to begin with a negative number, such as entering "-5"
-                    modifyDisplay.replaceTextSymbol('-');
-                }
             }
             case '/' -> {
                 Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
@@ -66,24 +62,24 @@ public class operators {
         switch (flag) {
             case '+' -> {
                 Controller.total += Double.parseDouble(modifyDisplay.getDisplayText());
-                modifyDisplay.setTextOperation();
+                modifyDisplay.setTotal();
             }
             case '-' -> {
                 Controller.total -= Double.parseDouble(modifyDisplay.getDisplayText());
-                modifyDisplay.setTextOperation();
+                modifyDisplay.setTotal();
             }
             case '/' -> {
                 Controller.total /= Double.parseDouble(modifyDisplay.getDisplayText());
-                modifyDisplay.setTextOperation();
+                modifyDisplay.setTotal();
             }
             case '*' -> {
                 Controller.total *= Double.parseDouble(modifyDisplay.getDisplayText());
-                modifyDisplay.setTextOperation();
+                modifyDisplay.setTotal();
             }
         }
-        modifyDisplay.setTextOperation();
-        Controller.calculationsBox_Static.setText(modifyDisplay.getCalculationsText() + '=');
-        modifyDisplay.appendCalculations(Controller.total);
+        modifyDisplay.setTotal();
+        Controller.calculationsBox_Static.setText(modifyDisplay.getCalculationsBoxText() + '=');
+        modifyDisplay.calculationsBoxAppend(Controller.total);
         flag = 0;
     }
 

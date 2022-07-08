@@ -85,7 +85,7 @@ public class Controller {
         Display_Static = Display;
         calculationsBox_Static = calculationsBox;
         modifyDisplay.append(buttonValue);
-        modifyDisplay.appendCalculations(buttonValue);
+        modifyDisplay.calculationsBoxAppend(buttonValue);
     }
 
     // This method runs similarly to appendChosen, but is capable of appending characters, not Integers.
@@ -96,7 +96,7 @@ public class Controller {
         Display_Static = Display;
         calculationsBox_Static = calculationsBox;
         modifyDisplay.appendChar(buttonValue);
-        modifyDisplay.appendCalculationsChar(buttonValue);
+        modifyDisplay.calculationsBoxAppendChar(buttonValue);
     }
 
     @FXML
@@ -104,7 +104,7 @@ public class Controller {
     void deleteAction(ActionEvent event) {
         Display_Static = Display;
         modifyDisplay.removeLast();
-        modifyDisplay.calculationsRemoveLast();
+        modifyDisplay.calculationsBoxRemoveLast();
     }
 
     @FXML
@@ -117,7 +117,7 @@ public class Controller {
             String x = event.getSource().toString();
             char operator = x.charAt(x.length() - 2);
             operators.chooseOperator(operator);
-            modifyDisplay.appendCalculationsChar(operator);
+            modifyDisplay.calculationsBoxAppendChar(operator);
         }
         catch(Exception e){
             System.out.println("Illegal use of operators");
@@ -130,7 +130,7 @@ public class Controller {
         Display_Static = Display;
         calculationsBox_Static = calculationsBox;
         modifyDisplay.clearDisplay();
-        modifyDisplay.clearCalculations();
+        modifyDisplay.clearCalculationBox();
         operators.flag = 0;
         total = 0;
     }

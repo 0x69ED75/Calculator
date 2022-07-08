@@ -42,30 +42,30 @@ public class modifyDisplay {
     }
 
     // This method sets the total display to the value currently stored in public variable 'total'.
-    public static void setTextOperation(){
+    public static void setTotal(){
         Controller.Display_Static.setText(String.valueOf(modifyDisplay.roundTo3.format(Controller.total)));
     }
 
     // This method appends any numbers to the calculations box, rounded to 3dp.
-    public static void appendCalculations(double num){
-        Controller.calculationsBox_Static.setText(getCalculationsText() + String.valueOf((modifyDisplay.roundTo3.format(num))));
+    public static void calculationsBoxAppend(double num){
+        Controller.calculationsBox_Static.setText(getCalculationsBoxText() + String.valueOf((modifyDisplay.roundTo3.format(num))));
     }
 
     // This method appends any symbols to the calculations box.
-    public static void appendCalculationsChar(char x){
+    public static void calculationsBoxAppendChar(char x){
         if(x != '='){ // appending any symbol except for the equals symbol, as I will need to append this after calculations are complete. manually..
-            Controller.calculationsBox_Static.setText(getCalculationsText() + String.valueOf(x));
+            Controller.calculationsBox_Static.setText(getCalculationsBoxText() + String.valueOf(x));
         }
     }
     // This method gets the calculations box text.
-    public static String getCalculationsText(){
+    public static String getCalculationsBoxText(){
         return Controller.calculationsBox_Static.getText();
     }
-    public static void clearCalculations(){
+    public static void clearCalculationBox(){
         Controller.calculationsBox_Static.setText("");
     }
-    public static void calculationsRemoveLast(){
-        StringBuilder x = new StringBuilder(getCalculationsText());
+    public static void calculationsBoxRemoveLast(){
+        StringBuilder x = new StringBuilder(getCalculationsBoxText());
         if(x.length() > 0){
             Controller.calculationsBox_Static.setText(x.deleteCharAt(x.length()-1).toString());
         }
