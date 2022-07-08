@@ -16,9 +16,21 @@ public class operators {
     public static char flag = 0;
     public static void chooseOperator(char x){
 
+        /* This next if statement is crucial for completing multiple calculations without pressing equals, e.g. (5+5+5+1 = 16, without this, we would only get the last two digits, 5+1)
+           It does this by calling the equals' method silently between operations, to keep a running sum.
+           Furthermore, this if statement has a nested if statement which handles the multiple use cases of the subtraction symbol, such as that to denote a negative integer.
+           For example, without this, the code could not handle equations such as 5+-5, as after pressing +, a number is expected, but an operator was given.
+           An exception to this rule is made when the flag is subtraction, as then it is likely the user wishes to do compound subtraction such as 5-10-15 rather than denote negative numbers.
+         */
         if(flag != 0 && x != '='){
-            equals();
-            flag = 0;
+            if(x == '-' && flag != '-'){ // if subtraction is given, when an operand was expected and the flag isn't already subtraction, it must mean the user wishes to denote a negative number.
+                modifyDisplay.replaceTextSymbol('-');
+                return;
+            }
+            else { // handling equations with multiple operators.
+                equals();
+                flag = 0;
+            }
         }
 
         switch (x) {
@@ -28,9 +40,14 @@ public class operators {
                 flag = '+';
             }
             case '-' -> {
-                Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
-                modifyDisplay.clearDisplay();
-                flag = '-';
+                try { // this try catch statement catches fringe uses of the subtraction symbol, such as that to denote negative numbers before anything else has been entered into the application.
+                    Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
+                    modifyDisplay.clearDisplay();
+                    flag = '-';
+                }
+                catch (Exception e){ // The only exception here can be that the user has chosen to begin with a negative number, such as entering "-5"
+                    modifyDisplay.replaceTextSymbol('-');
+                }
             }
             case '/' -> {
                 Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());

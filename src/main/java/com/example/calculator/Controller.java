@@ -16,6 +16,7 @@ public class Controller {
     @FXML
     private Label Display;
 
+
     static Label Display_Static; // making a static version of Display to be accessed outside of Controller, errors occur when trying to use setters / getters in this class.
 
     @FXML
@@ -96,7 +97,7 @@ public class Controller {
         Display_Static = Display;
         calculationsBox_Static = calculationsBox;
         modifyDisplay.appendChar(buttonValue);
-        modifyDisplay.appendCalculations(buttonValue);
+        modifyDisplay.appendCalculationsChar(buttonValue);
     }
 
     @FXML
@@ -110,16 +111,26 @@ public class Controller {
     @FXML
     // This method runs when an operator is pressed.
     void operatorSolve(ActionEvent event) {
-        String x = event.getSource().toString();
-        char operator = x.charAt(x.length()-2);
-        operators.chooseOperator(operator);
-        calculationsBox_Static = calculationsBox;
-        modifyDisplay.appendCalculationsChar(operator);
+
+        try { // Try-catch to handle improper uses of operators, such as using operators before an integer has been entered.
+            Display_Static = Display;
+            calculationsBox_Static = calculationsBox;
+            String x = event.getSource().toString();
+            char operator = x.charAt(x.length() - 2);
+            operators.chooseOperator(operator);
+            modifyDisplay.appendCalculationsChar(operator);
+        }
+        catch(Exception e){
+            System.out.println("Illegal use of operators");
+        }
+
     }
 
     @FXML
     // This runs when the clear button is pressed. It runs the clear display methods, as well as sets total to 0.
     void clearAction(ActionEvent event) {
+        Display_Static = Display;
+        calculationsBox_Static = calculationsBox;
         modifyDisplay.clearDisplay();
         modifyDisplay.clearCalculations();
         total = 0;

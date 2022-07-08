@@ -31,6 +31,10 @@ public class modifyDisplay {
             Controller.Display_Static.setText(x.deleteCharAt(x.length()-1).toString());
         }
     }
+    // This method is very similar to appendchar, except, instead of appending, we are completely replacing any existing text.
+    public static void replaceTextSymbol(char x){
+        Controller.Display_Static.setText(String.valueOf(x));
+    }
 
     // This method completely clears the value stored in the total display.
     public static void clearDisplay(){
