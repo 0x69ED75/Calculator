@@ -5,7 +5,6 @@ A basic calculator I have made to learn JavaFX and to try and use some OOP.
 
 TODO list:
 - Add error handling
-- Add a "running calculation" text box which shows the calculation carried out so far.
 - Improve object oriented-ness
 - Improve "Operators" class where the mathematics takes place, as currently I am not happy with how everything is calculated, although, it will work for now.
 
