@@ -8,7 +8,6 @@ For example, appending to the display or removing the last digit in the display.
 public class modifyDisplay {
     static DecimalFormat roundTo3 = new DecimalFormat("0.###"); // Rounding output to 3 decimal places.
 
-
     // This method appends the digit the user has pressed on the GUI onto the total.
     public static void append(int num){
         Controller.Display_Static.setText(getDisplayText() + String.valueOf(num));
@@ -31,6 +30,7 @@ public class modifyDisplay {
             Controller.Display_Static.setText(x.deleteCharAt(x.length()-1).toString());
         }
     }
+
     // This method is very similar to appendchar, except, instead of appending, we are completely replacing any existing text.
     public static void replaceTextSymbol(char x){
         Controller.Display_Static.setText(String.valueOf(x));
@@ -45,6 +45,10 @@ public class modifyDisplay {
     public static void setTotal(){
         Controller.Display_Static.setText(String.valueOf(modifyDisplay.roundTo3.format(Controller.total)));
     }
+    // This method gets the length of the display.
+    public static int getDisplayLength(){
+        return modifyDisplay.getDisplayText().length();
+    }
 
     // This method appends any numbers to the calculations box, rounded to 3dp.
     public static void calculationsBoxAppend(double num){
@@ -57,13 +61,18 @@ public class modifyDisplay {
             Controller.calculationsBox_Static.setText(getCalculationsBoxText() + String.valueOf(x));
         }
     }
+
     // This method gets the calculations box text.
     public static String getCalculationsBoxText(){
         return Controller.calculationsBox_Static.getText();
     }
+
+   // This method clears the calculation box text.
     public static void clearCalculationBox(){
         Controller.calculationsBox_Static.setText("");
     }
+
+    // This method removes the last char in the calculations box.
     public static void calculationsBoxRemoveLast(){
         StringBuilder x = new StringBuilder(getCalculationsBoxText());
         if(x.length() > 0){

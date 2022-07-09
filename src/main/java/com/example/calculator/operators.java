@@ -21,7 +21,7 @@ public class operators {
            A length check is here as an additional check to decide whether a negative number was depicted, or whether subtraction was depicted.
            A negative number is depicted by a '-' being entered before the number, which in this case is when the length of getDisplayText is 1 (as displayText is initialised as char " ", making it of length 1)
            This avoids situations where the application interprets subtraction as a negative number*/
-        if(x == '-' && modifyDisplay.getDisplayText().length()==1){
+        if(x == '-' && modifyDisplay.getDisplayLength()==1){
             modifyDisplay.replaceTextSymbol('-');
             return;
         }
@@ -60,7 +60,7 @@ public class operators {
     }
     public static void equals(){
         switch (flag) {
-            case '+' -> {
+            case '+', 0 -> { // accounting for calculations where the user never uses an operator, such as just putting 5 into the calculator and pressing equals.
                 Controller.total += Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.setTotal();
             }
@@ -81,6 +81,10 @@ public class operators {
         Controller.calculationsBox_Static.setText(modifyDisplay.getCalculationsBoxText() + '=');
         modifyDisplay.calculationsBoxAppend(Controller.total);
         flag = 0;
+    }
+    public static void squareRoot(){
+        Controller.total = Math.sqrt(Double.parseDouble(modifyDisplay.getDisplayText()));
+        modifyDisplay.setTotal();
     }
 
 }

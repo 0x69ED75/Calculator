@@ -10,7 +10,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-
 public class Controller {
 
     public static double total = 0;
@@ -71,6 +70,8 @@ public class Controller {
 
     @FXML
     private Button decimalSelect;
+    @FXML
+    private Button sqrtSelect;
 
     @FXML
     /* Appending the button's text to Display.
@@ -133,6 +134,19 @@ public class Controller {
         modifyDisplay.clearCalculationBox();
         operators.flag = 0;
         total = 0;
+    }
+
+    @FXML
+    void squareRootAction(ActionEvent event) {
+
+        if(operators.flag != 0){ // If there is a pending calculation, it is calculated before moving onto square rooting the result.
+            operators.equals();
+        }
+        Display_Static = Display;
+        calculationsBox_Static = calculationsBox;
+        operators.squareRoot();
+        Controller.calculationsBox_Static.setText("sqrt("+ modifyDisplay.getCalculationsBoxText() + ") =" +modifyDisplay.roundTo3.format(Controller.total));
+
     }
 
 
