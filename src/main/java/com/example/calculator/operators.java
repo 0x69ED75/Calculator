@@ -60,7 +60,7 @@ public class operators {
     }
     public static void equals(){
         switch (flag) {
-            case '+', 0 -> { // accounting for calculations where the user never uses an operator, such as just putting 5 into the calculator and pressing equals.
+            case '+' -> {
                 Controller.total += Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.setTotal();
             }
@@ -76,14 +76,19 @@ public class operators {
                 Controller.total *= Double.parseDouble(modifyDisplay.getDisplayText());
                 modifyDisplay.setTotal();
             }
+            case 0 ->{// accounting for calculations where the user never uses an operator, such as just putting 5 into the calculator and pressing equals.
+                Controller.total = Double.parseDouble(modifyDisplay.getDisplayText());
+                modifyDisplay.setTotal();
+                return;
+            }
         }
-        modifyDisplay.setTotal();
         Controller.calculationsBox_Static.setText(modifyDisplay.getCalculationsBoxText() + '=');
         modifyDisplay.calculationsBoxAppend(Controller.total);
         flag = 0;
     }
     public static void squareRoot(){
-        Controller.total = Math.sqrt(Double.parseDouble(modifyDisplay.getDisplayText()));
+        operators.equals(); // carrying out any operations that have not yet been carried out before pressing the sqrt button. This also catches entries where no operators have been pressed.
+        Controller.total = Math.sqrt((Controller.total));
         modifyDisplay.setTotal();
     }
 

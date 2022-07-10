@@ -43,16 +43,23 @@ public class modifyDisplay {
 
     // This method sets the total display to the value currently stored in public variable 'total'.
     public static void setTotal(){
-        Controller.Display_Static.setText(String.valueOf(modifyDisplay.roundTo3.format(Controller.total)));
+        Controller.Display_Static.setText(String.valueOf(roundTo3.format(Controller.total)));
+        Controller.Display_Static.setText(" " + getDisplayText());
     }
+
     // This method gets the length of the display.
     public static int getDisplayLength(){
-        return modifyDisplay.getDisplayText().length();
+        return getDisplayText().length();
+    }
+
+    // This method prints an error message to the display.
+    public static void errorDisplay()  {
+        Controller.Display_Static.setText("Error");
     }
 
     // This method appends any numbers to the calculations box, rounded to 3dp.
     public static void calculationsBoxAppend(double num){
-        Controller.calculationsBox_Static.setText(getCalculationsBoxText() + String.valueOf((modifyDisplay.roundTo3.format(num))));
+        Controller.calculationsBox_Static.setText(getCalculationsBoxText() + String.valueOf((roundTo3.format(num))));
     }
 
     // This method appends any symbols to the calculations box.
