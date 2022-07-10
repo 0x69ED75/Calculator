@@ -1,12 +1,20 @@
 # Calculator
-A basic calculator I have made to learn JavaFX and to try and use some OOP.
+### A basic calculator I have made to learn JavaFX and to try and use some OOP.
 
-- Currently supports: addition, subtraction, multiplication,division and the square root of both whole and decimal numbers, as well as negative numbers.
+Currently supports the following for positive, negative and decimal point integers:
+* Addition
+* Subtraction
+* Multiplication
+* Division
+* Square root 
+* Binary Conversion (currently only for whole positive Integers)
+
+Furthermore, error handling is included where possible.
 
 TODO list:
-- Add error handling - 25% complete.
+- Include more conversions
 - Improve object oriented-ness
-- Improve "Operators" class, it is an exponential growing mess with every feature added.
 
-![screenshot](https://cdn.upload.systems/uploads/AaqV2VBM.gif)
+![gif](https://cdn.upload.systems/uploads/TxZ5hIbR.gif)
+![gif](https://cdn.upload.systems/uploads/0mWomFMc.gif)
 
