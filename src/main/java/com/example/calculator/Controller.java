@@ -58,10 +58,6 @@ public class Controller {
     @FXML
     private Button binarySelect;
 
-    public static void main(String[] args) {
-
-    }
-
     @FXML
     /* Appending the button's text to Display.
     Usually, to successfully pass the correct number to the modifyDisplay class, I  would need a different method for each button, with each method calling the modifyDisplay method with the integer of the button pressed as parameter.
