@@ -57,7 +57,8 @@ public class Controller {
     private Button sqrtSelect;
     @FXML
     private Button binarySelect;
-
+    @FXML
+    private Button hexSelect;
     @FXML
     /* Appending the button's text to Display.
     Usually, to successfully pass the correct number to the modifyDisplay class, I  would need a different method for each button, with each method calling the modifyDisplay method with the integer of the button pressed as parameter.
@@ -145,12 +146,12 @@ public class Controller {
         // Getting the text of the button that was clicked. This will be used to understand which button the user pressed.
         String x = (((Button)event.getSource()).getText());  // i.e. if the user presses the binary button, the value of x is "Binary"
 
-        try {
+       try {
             Conversions.solveConversion(x);
         }
-        catch (Exception e){
-            System.out.println("Illegal Conversion");
-            modifyDisplay.errorDisplay();
+       catch (Exception e){
+           System.out.println("Illegal Conversion");
+           modifyDisplay.errorDisplay();
         }
 
     }

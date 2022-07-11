@@ -17,6 +17,10 @@ public class modifyDisplay {
     public static void appendChar(char x){
         Controller.Display_Static.setText(getDisplayText() + String.valueOf(x));
     }
+    // sets the value of the display to a given string.
+    public static void setString(String x){
+        Controller.Display_Static.setText(x);
+    }
 
     // This method gets the current value stored in the Total label.
     public static String getDisplayText(){
