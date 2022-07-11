@@ -49,6 +49,7 @@ public class modifyDisplay {
     public static void setTotal(){
         Controller.Display_Static.setText(String.valueOf(roundTo3.format(Controller.total)));
         Controller.Display_Static.setText(" " + getDisplayText());
+        Conversions.conversionUpdate(); // The conversion method is called here as all operations call this method.
     }
 
     // This method gets the length of the display.

@@ -56,9 +56,18 @@ public class Controller {
     @FXML
     private Button sqrtSelect;
     @FXML
-    private Button binarySelect;
+    private Label binaryOut;
+    static Label binaryOut_Static;
     @FXML
-    private Button hexSelect;
+    private Label hexOut;
+    static Label hexOut_Static;
+    @FXML
+    private Label denaryOut;
+    static Label denaryOut_Static;
+    @FXML
+    private Label octOut;
+    static Label octOut_Static;
+
     @FXML
     /* Appending the button's text to Display.
     Usually, to successfully pass the correct number to the modifyDisplay class, I  would need a different method for each button, with each method calling the modifyDisplay method with the integer of the button pressed as parameter.
@@ -67,10 +76,9 @@ public class Controller {
     I can successfully extract the text from the button using .getText, effectively grabbing the buttons' integer value.
      */
     void appendChosen(ActionEvent event) {
+        updateStaticVariables();
         // Getting the source of the event, which is the button the user pressed, then getting the text of this button, which is the number the user pressed. It is therefore parsed as int.
         int buttonValue = Integer.parseInt((((Button)event.getSource()).getText()));
-        Display_Static = Display;
-        calculationsBox_Static = calculationsBox;
         modifyDisplay.append(buttonValue);
         modifyDisplay.calculationsBoxAppend(buttonValue);
     }
@@ -78,9 +86,8 @@ public class Controller {
     // This method runs similarly to appendChosen, but is capable of appending characters, not Integers.
     @FXML
     void appendDecimal(ActionEvent event) {
+        updateStaticVariables();
         char buttonValue = ((Button)event.getSource()).getText().charAt(0);
-        Display_Static = Display;
-        calculationsBox_Static = calculationsBox;
         modifyDisplay.appendChar(buttonValue);
         modifyDisplay.calculationsBoxAppendChar(buttonValue);
     }
@@ -88,7 +95,7 @@ public class Controller {
     @FXML
     // This method runs when the Delete button is pressed, to remove a single digit.
     void deleteAction(ActionEvent event) {
-        Display_Static = Display;
+        updateStaticVariables();
         modifyDisplay.removeLast();
         modifyDisplay.calculationsBoxRemoveLast();
     }
@@ -96,10 +103,8 @@ public class Controller {
     @FXML
     // This method runs when an operator is pressed.
     void operatorSolve(ActionEvent event) {
-
+        updateStaticVariables();
         try { // Try-catch to handle improper uses of operators, such as using operators before an integer has been entered. An exception for denoting negative numbers exists in operators.chooseOperator
-            Display_Static = Display;
-            calculationsBox_Static = calculationsBox;
             char operator = ((Button)event.getSource()).getText().charAt(0);
             operators.chooseOperator(operator);
             modifyDisplay.calculationsBoxAppendChar(operator);
@@ -113,10 +118,10 @@ public class Controller {
     @FXML
     // This runs when the clear button is pressed. It runs the clear display methods, as well as sets total to 0.
     void clearAction(ActionEvent event) {
-        Display_Static = Display;
-        calculationsBox_Static = calculationsBox;
+        updateStaticVariables();
         modifyDisplay.clearDisplay();
         modifyDisplay.clearCalculationBox();
+        Conversions.conversionClear();
         operators.flag = 0;
         total = 0;
     }
@@ -124,8 +129,7 @@ public class Controller {
     @FXML
     // This runs when square root is pressed. It has error handling, as well as running the 'squareRoot' method in 'operators'
     void squareRootAction(ActionEvent event) {
-        Display_Static = Display;
-        calculationsBox_Static = calculationsBox;
+        updateStaticVariables();
 
         try {
             operators.squareRoot();
@@ -137,24 +141,15 @@ public class Controller {
         }
     }
 
-    @FXML
-    // This method is responsible for resolving the conversion the user wishes to complete, then carrying out this conversion through the 'Conversions' class.
-    void conversionSolve(ActionEvent event) {
+    // This initialises all the static labels created above, by putting them in a method I don't have to keep typing them out.
+    // However, in an ideal world I would not use static variables at all...
+     void updateStaticVariables(){
         Display_Static = Display;
         calculationsBox_Static = calculationsBox;
-
-        // Getting the text of the button that was clicked. This will be used to understand which button the user pressed.
-        String x = (((Button)event.getSource()).getText());  // i.e. if the user presses the binary button, the value of x is "Binary"
-
-       try {
-            Conversions.solveConversion(x);
-        }
-       catch (Exception e){
-           System.out.println("Illegal Conversion");
-           modifyDisplay.errorDisplay();
-        }
-
+        binaryOut_Static = binaryOut;
+        hexOut_Static = hexOut;
+        denaryOut_Static = denaryOut;
+        octOut_Static = octOut;
     }
-
 
 }

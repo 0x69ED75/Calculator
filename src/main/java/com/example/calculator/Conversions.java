@@ -1,29 +1,31 @@
 package com.example.calculator;
 
 public class Conversions {
-    public static void solveConversion(String x){
-        operators.equals(); // carrying out any outstanding operations before attempting to convert values.
-        if(Controller.total < 0){modifyDisplay.errorDisplay(); return;}
+    // This method converts the value currently set as the total to binary, hexadecimal, decimal and octal.
+    public static void conversionUpdate(){
+        Controller.binaryOut_Static.setText((Integer.toBinaryString((int) Controller.total)));
+        Controller.hexOut_Static.setText((Integer.toHexString((int) Controller.total)));
+        Controller.octOut_Static.setText((Integer.toOctalString((int) Controller.total)));
 
-        switch (x) {
-            case "Binary" -> {
-                Controller.total = Double.parseDouble((Integer.toBinaryString((int) Controller.total)));
-                modifyDisplay.setTotal();
-                Controller.calculationsBox_Static.setText("bin(" + modifyDisplay.getCalculationsBoxText() + ")=" + modifyDisplay.roundTo3.format(Controller.total));
-            }
-            case "Hex" -> {
-                try {
-                    Controller.total = Double.parseDouble((Integer.toHexString((int) Controller.total)));
-                    modifyDisplay.setTotal();
-                    Controller.calculationsBox_Static.setText("hex(" + modifyDisplay.getCalculationsBoxText() + ")=" + modifyDisplay.roundTo3.format(Controller.total));
-
-                }
-                catch (Exception e){ // In the case that the hexadecimal result contains letters, this will run, since, modifyDisplay.setTotal cannot support characters.
-                    modifyDisplay.setString(Integer.toHexString((int) Controller.total));
-                    Controller.calculationsBox_Static.setText("hex(" + modifyDisplay.getCalculationsBoxText() + ")=" +(Integer.toHexString((int) Controller.total)));
-                }
-            }
+        /*
+        The following try except statement converts any binary value into hexadecimal.
+        The try statement will run successfully if the value entered is a binary value, and therefore return a hexadecimal value
+        The catch will run if the entered value isn't a binary value, and the value returned will just be the same value entered.
+         */
+        try {
+            Controller.denaryOut_Static.setText(String.valueOf(Integer.parseInt(String.valueOf((int) Controller.total), 2)));
         }
+        catch(Exception e){
+            Controller.denaryOut_Static.setText(modifyDisplay.getDisplayText());
+        }
+    }
+    // This method clears the conversion table.
+    public static void conversionClear(){
+        Controller.binaryOut_Static.setText(" ");
+        Controller.hexOut_Static.setText(" ");
+        Controller.octOut_Static.setText(" ");
+        Controller.denaryOut_Static.setText(" ");
+
     }
 
 }

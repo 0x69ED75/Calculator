@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="647.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculator.Controller">
@@ -112,15 +113,58 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="binarySelect" layoutX="356.0" layoutY="132.0" mnemonicParsing="false" onAction="#conversionSolve" prefHeight="56.0" prefWidth="81.0" text="Binary">
+      <Label layoutX="411.0" layoutY="147.0" text="Conversions">
          <font>
-            <Font size="18.0" />
+            <Font size="17.0" />
          </font>
-      </Button>
-      <Button fx:id="hexSelect" layoutX="356.0" layoutY="188.0" mnemonicParsing="false" onAction="#conversionSolve" prefHeight="56.0" prefWidth="81.0" text="Hex">
+      </Label>
+      <Line endX="96.5858154296875" endY="0.585784912109375" layoutX="463.0" layoutY="131.0" startX="-99.0" startY="0.585784912109375" strokeWidth="2.0" />
+      <Line endX="75.5858154296875" endY="-22.414215087890625" layoutX="485.0" layoutY="155.0" startX="78.0" startY="202.0" strokeWidth="2.0" />
+      <Line endX="77.0" endY="-24.414215087890625" layoutX="286.0" layoutY="157.0" startX="77.0" startY="201.0" strokeWidth="2.0" />
+      <Line endX="95.5858154296875" layoutX="465.0" layoutY="356.0" startX="-100.0" strokeWidth="2.0" />
+      <Line endX="98.5858154296875" layoutX="462.0" layoutY="180.0" startX="-98.0" strokeWidth="2.0" />
+      <Label layoutX="365.0" layoutY="233.0" prefHeight="26.0" prefWidth="57.0" text="Binary:">
          <font>
-            <Font size="18.0" />
+            <Font size="17.0" />
          </font>
-      </Button>
+      </Label>
+      <Label fx:id="binaryOut" layoutX="417.0" layoutY="234.0" prefHeight="26.0" prefWidth="114.0" text=" ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="365.0" layoutY="280.0" prefHeight="26.0" prefWidth="57.0" text="Hex:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Line endX="97.171630859375" layoutX="462.0" layoutY="272.0" startX="-98.0" strokeWidth="2.0" />
+      <Label fx:id="hexOut" layoutX="400.0" layoutY="280.0" prefHeight="26.0" prefWidth="114.0" text=" ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="365.0" layoutY="188.0" prefHeight="26.0" prefWidth="57.0" text="Denary:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="denaryOut" layoutX="424.0" layoutY="188.0" prefHeight="26.0" prefWidth="103.0" text=" ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Line endX="97.171630859375" layoutX="462.0" layoutY="223.0" startX="-98.0" strokeWidth="2.0" />
+      <Line endX="97.171630859375" layoutX="462.0" layoutY="315.0" startX="-98.0" strokeWidth="2.0" />
+      <Label layoutX="365.0" layoutY="320.0" prefHeight="26.0" prefWidth="57.0" text="Octal:">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="octOut" layoutX="412.0" layoutY="320.0" prefHeight="26.0" prefWidth="114.0" text=" ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
