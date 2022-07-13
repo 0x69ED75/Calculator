@@ -2,10 +2,11 @@ package com.example.calculator;
 import java.text.DecimalFormat;
 
 /*
-The modifyDisplay class stores any method which interacts with the total amount display.
+The modifyDisplay class is a utility class that stores any method which interacts with the total amount display.
 For example, appending to the display or removing the last digit in the display.
  */
 public class modifyDisplay {
+
     static DecimalFormat roundTo3 = new DecimalFormat("0.###"); // Rounding output to 3 decimal places.
 
     // This method appends the digit the user has pressed on the GUI onto the total.

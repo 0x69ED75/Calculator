@@ -13,8 +13,9 @@ This class works by doing the following:
  */
 public class operators {
 
-    public static char flag = 0;
-    public static void chooseOperator(char x){
+    public char flag = 0;
+
+    public void chooseOperator(char x){
 
         /*This if statement handles the multiple use cases of the subtraction symbol, such as that to denote a negative integer.
            For example, without this, the code could not handle equations such as 5+-5, as after pressing +, an operand is expected, but an operator was given.
@@ -58,7 +59,7 @@ public class operators {
             }
         }
     }
-    public static void equals(){
+    public void equals(){
         switch (flag) {
             case '+' -> {
                 Controller.total += Double.parseDouble(modifyDisplay.getDisplayText());
@@ -86,8 +87,9 @@ public class operators {
         modifyDisplay.calculationsBoxAppend(Controller.total);
         flag = 0;
     }
-    public static void squareRoot(){
-        operators.equals(); // carrying out any operations that have not yet been carried out before pressing the sqrt button. This also catches entries where no operators have been pressed.
+
+    public void squareRoot(){
+        equals(); // carrying out any operations that have not yet been carried out before pressing the sqrt button. This also catches entries where no operators have been pressed.
         Controller.total = Math.sqrt((Controller.total));
         modifyDisplay.setTotal();
     }

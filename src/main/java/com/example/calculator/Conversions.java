@@ -1,7 +1,11 @@
 package com.example.calculator;
 
+/*
+The conversion class is a utility class that handles any conversion operations to binary, hexadecimal, octal and denary(decimal) values.
+ */
+
 public class Conversions {
-    // This method converts the value currently set as the total to binary, hexadecimal, decimal and octal.
+    // This method converts the value currently set as the total to binary, hexadecimal, decimal and octal. It is only called when the total changes.
     public static void conversionUpdate(){
         Controller.binaryOut_Static.setText((Integer.toBinaryString((int) Controller.total)));
         Controller.hexOut_Static.setText((Integer.toHexString((int) Controller.total)));

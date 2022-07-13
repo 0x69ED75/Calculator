@@ -12,6 +12,8 @@ import javafx.scene.control.Label;
 
 public class Controller {
 
+    private final operators operation = new operators();
+
     public static double total = 0;
     @FXML
     private Label Display;
@@ -106,7 +108,7 @@ public class Controller {
         updateStaticVariables();
         try { // Try-catch to handle improper uses of operators, such as using operators before an integer has been entered. An exception for denoting negative numbers exists in operators.chooseOperator
             char operator = ((Button)event.getSource()).getText().charAt(0);
-            operators.chooseOperator(operator);
+            operation.chooseOperator(operator);
             modifyDisplay.calculationsBoxAppendChar(operator);
         }
         catch(Exception e){
@@ -122,7 +124,7 @@ public class Controller {
         modifyDisplay.clearDisplay();
         modifyDisplay.clearCalculationBox();
         Conversions.conversionClear();
-        operators.flag = 0;
+        operation.flag = 0;
         total = 0;
     }
 
@@ -132,7 +134,7 @@ public class Controller {
         updateStaticVariables();
 
         try {
-            operators.squareRoot();
+            operation.squareRoot();
             Controller.calculationsBox_Static.setText("sqrt(" + modifyDisplay.getCalculationsBoxText() + ") =" + modifyDisplay.roundTo3.format(Controller.total));
         }
         catch (Exception e){ // catches any improper use of square root, e.g. using square root when no number is entered or when an invalid input is entered.
